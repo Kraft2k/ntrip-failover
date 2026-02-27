@@ -31,12 +31,12 @@ The configuration is stored in /etc/config/ntrip. You can edit it manually or us
 | port | Caster port | 2101 |
 | user | Your login | user |
 | password | Your password | password |
-| mountpoint| Space-separated list of bases | 'BASE1 BASE2' |
+| mountpoint| Space-separated list of bases | 'MOUNT_1 MOUNT_2' |
 | serial_port| Target serial device | /dev/ttyS0 |
 
 ### Command Line Configuration Example:
 ```bash
-uci set ntrip.client.mountpoint='STATION_A STATION_B'
+uci set ntrip.client.mountpoint='MOUNT_1 MOUNT_2'
 uci set ntrip.client.user='my_user'
 uci commit ntrip
 /etc/init.d/ntrip-stream restart
