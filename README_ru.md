@@ -18,3 +18,43 @@
 ```bash
 config client
     option mountpoint 'MOUNT_1 MOUNT_2'
+
+
+## Инструкция по установке и настройке 
+### 1. Установка пакета
+Перенесите файл пакета на роутер (например, через SCP) и выполните установку:
+
+
+Копирование (выполняется на ПК)
+```bash
+scp ntrip-failover-plus_1.0.0_mipsel_24kc.ipk root@192.168.1.1:/tmp/
+
+## Установка (выполняется на роутере)
+```bash
+opkg install /tmp/ntrip-failover-plus_1.0.0_mipsel_24kc.ipk
+Пакет автоматически создаст конфиг, переименует бинарник и настроит автозапуск.
+
+2. Настройка конфигурации
+Все настройки хранятся в файле /etc/config/ntrip. Вы можете отредактировать его вручную через vi:
+
+Bash
+vi /etc/config/ntrip
+Или используя команды uci (рекомендуется):
+
+Bash
+uci set ntrip.client.mountpoint='BASE1 BASE2'
+uci set ntrip.client.user='my_login'
+uci set ntrip.client.password='my_pass'
+uci commit ntrip
+3. Управление сервисом
+Скрипт работает как системная служба.
+
+Bash
+/etc/init.d/ntrip-stream restart  # Перезапуск после смены настроек
+/etc/init.d/ntrip-stream stop     # Остановка
+/etc/init.d/ntrip-stream start    # Запуск
+4. Просмотр логов
+Для отладки и мониторинга переключений используйте стандартный logread:
+
+Bash
+logread -f | grep ntrip-failover
