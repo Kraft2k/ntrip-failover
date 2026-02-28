@@ -45,7 +45,8 @@ vi /etc/config/ntrip
 Или используя команды uci (рекомендуется):
 
 ```bash
-uci set ntrip.client.mountpoint='BASE1 BASE2'
+uci set ntrip.client.mountpoint='MOUNT1 MOUNT1'
+uci set ntrip.client.server='my_server'
 uci set ntrip.client.user='my_login'
 uci set ntrip.client.password='my_pass'
 uci commit ntrip

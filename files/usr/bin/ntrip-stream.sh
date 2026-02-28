@@ -98,7 +98,6 @@ while true; do
 
       # TIMEOUT using a "last activity" heuristic:
       # We treat "client is alive but hasn't written anything recently" as a bad state.
-      # (If you want a strict byte-accurate timeout based on real RTCM bytes, we can add a data-forwarder.)
       last_rx=$(cat "$LAST_RX_FILE" 2>/dev/null)
       [ -z "$last_rx" ] && last_rx=$(date +%s)
       now=$(date +%s)
